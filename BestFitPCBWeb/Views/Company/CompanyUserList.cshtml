@@ -1,0 +1,54 @@
+﻿@model IEnumerable<BestFitBusinessLayer.company>
+
+@{
+    ViewBag.Title = "Company Usert List";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div id="main" role="main">
+	<div id="content">		
+		<div class="grid_12" style="width:90%;" >
+			<div class="box">
+				<h2>
+					<a href="#" id="toggle-list">Company List</a>
+				</h2>
+				<div class="block" id="list">
+                    <table border="0" class="display">
+                        <thead>
+                            <tr>
+                                <th>Company Name</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model) {
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => item.companyName)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.companyPhone)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.companyEmail)</td>
+                                    <td>
+                                        <a href="javascript:loadUserList(@(item.companyId))" class="actionlink catlink">Users</a>
+                                        @Html.ActionLink("Edit", "EditCompany", new { companyId = item.companyId }, new { @class ="actionlink editlink" })
+                                        @Html.ActionLink("Delete", "DeleteCompanyAjax", new { companyId=item.companyId }, new { @class ="actionlink deletelink" })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="CompanyUserList">
+            
+        </div>
+        <div id="delete-dialog" title="Confirmation">
+            <p>Are you sure you want to delete this?</p>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/Admin/companyUsers.js")
+}

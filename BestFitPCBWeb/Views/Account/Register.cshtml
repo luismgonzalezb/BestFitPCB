@@ -1,0 +1,36 @@
+﻿@model BestFitPCBWeb.Models.RegisterModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LayoutAccount.cshtml";
+}
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { id="login" }))
+{
+    
+    <fieldset class="boxBody">
+        <legend></legend>
+        <h1>Register User to BestFit PCB</h1>
+        <p class="register">Already a member? @Html.ActionLink("Login Here!", "Login")</p>
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary()
+        <div class="control-group">
+    	    <label for="UserName">User Name</label>
+            @Html.TextBoxFor(m => m.UserName, new { placeholder = "User Name", @class = "field required" })
+        </div>
+        <div class="control-group">
+            <label for="Password">Password</label>
+            @Html.PasswordFor(m => m.Password,new { placeholder = "Password", @class = "field required" })
+        </div>
+        <div class="control-group">
+            <label for="ConfirmPassword">Confirm Password</label>
+            @Html.PasswordFor(m => m.ConfirmPassword,new { placeholder = "Confirm Password", @class = "field required" })
+        </div>
+        <div class="submit">
+            <button type="submit">Register</button>
+        </div>
+    </fieldset>
+    
+}
+@section Scripts {
+    @Scripts.Render("~/Scripts/Account/register.js")
+}

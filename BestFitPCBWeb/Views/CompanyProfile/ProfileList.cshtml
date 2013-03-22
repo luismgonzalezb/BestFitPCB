@@ -1,0 +1,35 @@
+﻿@using BestFitBusinessLayer
+
+@{
+    List<companyProfile> profiles = ViewBag.profiles as List<companyProfile>;
+}
+
+<h3> @ViewBag.companyName</h3>
+
+@if (profiles.Count > 0) {
+<table border="0" class="display">
+    <thead>
+        <tr>
+            <th>Profile Name</th>
+            <th>Last Modified</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in profiles) {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.profileName)</td>
+                <td>@Html.DisplayFor(modelItem => item.createDate)</td>
+                <td>
+                    <a href="javascript:openProfileSettings(@(item.profileId))" class="actionlink settlink">Settings</a>
+                    <a href="javascript:openEditProfileForm(@(item.profileId))" class="actionlink editlink">Edit</a>
+                    @Html.ActionLink("Delete", "DeleteProfileAjax", new { id=item.profileId }, new { @class ="actionlink deletelink deleteprofilelink" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+}
+<h4 class="alert_error" id="error-msg">Error Message</h4>
+<div id="profileSettings"></div>
+<a href="javascript:openNewProfileForm(@(ViewBag.companyId))">Create New Profile</a>

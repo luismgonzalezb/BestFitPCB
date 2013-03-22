@@ -1,0 +1,76 @@
+﻿@model BestFitPCBWeb.Models.CreateCompanyModel
+
+@{
+    ViewBag.Title = "CreateCompany";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div id="main" role="main">
+    <div id="content">
+        <div class="grid_4">
+        <div class="box">
+		    <h2>
+			    <a href="#" id="toggle-forms">Company Details</a>
+		    </h2>
+		    <div class="block" id="forms">
+                @if (ViewBag.success != null) {
+                    if (true == (Boolean)ViewBag.success)
+                    {
+                        <h4 class="alert_success" >@ViewBag.Message</h4>
+                    }
+                    else
+                    {
+                        <h4 class="alert_error" >@ViewBag.Message</h4>
+                    }
+                }
+
+                @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
+                    @Html.ValidationSummary(true, "Please correct all the issues.")
+
+                    <fieldset>
+                        <legend>New Company</legend>
+                        <div class="sixteen_column section">
+							<div class="eight column">
+								<div class="column_content">
+                                    @Html.LabelFor(m => m.companyName)
+                                    @Html.TextBoxFor(m => m.companyName)
+                                </div>
+                            </div>
+                            <div class="eight column">
+								<div class="column_content">
+                                    @Html.LabelFor(m => m.companyEmail)
+                                    @Html.TextBoxFor(m => m.companyEmail)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sixteen_column section">
+							<div class="eight column">
+								<div class="column_content">
+                                    @Html.LabelFor(m => m.companyPhone)
+                                    @Html.TextBoxFor(m => m.companyPhone)
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </fieldset>
+                    <div class="sixteen_column section">
+						<div class="ten column">
+							<div class="column_content">
+							</div>
+						</div>
+						<div class="six column">
+							<div class="column_content">
+							    <input type="submit" value="Create" class="alt_btn" />
+							</div>
+						</div>
+					</div>
+                }
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    
+}

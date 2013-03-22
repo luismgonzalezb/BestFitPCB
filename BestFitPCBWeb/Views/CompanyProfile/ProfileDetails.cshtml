@@ -1,0 +1,208 @@
+﻿@using BestFitBusinessLayer
+
+@{
+    List<arraySpacing> arrayspacings = ViewBag.arrayspacings;
+    List<panelSpacing> panelspacings = ViewBag.panelspacings;
+    List<cupon> cupons = ViewBag.cupons;
+    List<panelSize> panelsizes = ViewBag.panelsizes;
+    List<panelTooling> paneltoolings = ViewBag.paneltoolings;
+    List<drowingColor> drowingcolors = ViewBag.drowingcolors;
+}
+
+<div class="block" id="profileConfig" style="width:500px;">
+    <h3> @ViewBag.profileName </h3>
+    <fieldset>
+        <legend>Panel Sizes</legend>
+        @if (panelsizes.Count > 0) 
+        {
+            <table border="0" class="display">
+                <thead>
+                    <tr>
+                        <th>Panel Size</th>
+                        <th>Default</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (panelSize item in panelsizes)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.x) X @Html.DisplayFor(modelItem => item.y) </td>
+                            <td>@Html.DisplayFor(modelItem => item.@default)</td>
+                            <td>
+                                <a href="javascript:setDefaultPanelSize(@(item.panelSizeId))" class="actionlink checklink">Set Def</a>
+                                <a href="javascript:openProfileDetailWindow(@(item.panelSizeId),'Edit','PanelSize')" class="actionlink editlink">Edit</a>
+                                @Html.ActionLink("Delete", "DeletePanelSizeAjax", new { id = item.panelSizeId }, new { @class ="actionlink deletelink deleteprofiledetlink" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        <a href="javascript:openProfileDetailWindow(@ViewBag.profileId,'Create','PanelSize')">Add Panel Size</a>
+    </fieldset>
+    <fieldset>
+        <legend>Panel Spacing</legend>
+        @if (panelspacings.Count > 0) 
+        {
+            <table border="0" class="display">
+                <thead>
+                    <tr>
+                        <th>Spacing Name</th>
+                        <th>Min</th>
+                        <th>Max</th>
+                        <th>Std</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (panelSpacing item in panelspacings)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.panelSpacingName) </td>
+                            <td>@Html.DisplayFor(modelItem => item.min)</td>
+                            <td>@Html.DisplayFor(modelItem => item.max)</td>
+                            <td>@Html.DisplayFor(modelItem => item.std)</td>
+                            <td>
+                                <a href="javascript:openProfileDetailWindow(@(item.panelSpacingId),'Edit','PanelSpacing')" class="actionlink editlink">Edit</a>
+                                @Html.ActionLink("Delete", "DeletePanelSpacingAjax", new { id=item.panelSpacingId }, new { @class ="actionlink deletelink deleteprofiledetlink" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        <a href="javascript:openProfileDetailWindow(@ViewBag.profileId,'Create','PanelSpacing')">Add Panel Spacing</a>
+    </fieldset>
+    <fieldset>
+        <legend>Array Spacing</legend>
+        @if (arrayspacings.Count > 0) 
+        {
+            <table border="0" class="display">
+                <thead>
+                    <tr>
+                        <th>Spacing Name</th>
+                        <th>Min</th>
+                        <th>Max</th>
+                        <th>Std</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (arraySpacing item in arrayspacings)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.arraySpacingName) </td>
+                            <td>@Html.DisplayFor(modelItem => item.min)</td>
+                            <td>@Html.DisplayFor(modelItem => item.max)</td>
+                            <td>@Html.DisplayFor(modelItem => item.std)</td>
+                            <td>
+                                <a href="javascript:openProfileDetailWindow(@(item.arraySpacingId),'Edit','ArraySpacing')" class="actionlink editlink">Edit</a>
+                                @Html.ActionLink("Delete", "DeleteArraySpacingAjax", new { id=item.arraySpacingId }, new { @class ="actionlink deletelink deleteprofiledetlink" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        <a href="javascript:openProfileDetailWindow(@ViewBag.profileId,'Create','ArraySpacing')">Add Array Spacing</a>
+    </fieldset>
+    <fieldset>
+        <legend>Cupons</legend>
+        @if (cupons.Count > 0) 
+        {
+            <table border="0" class="display">
+                <thead>
+                    <tr>
+                        <th>Cupon Name</th>
+                        <th>with</th>
+                        <th>height</th>
+                        <th>Spacing</th>
+                        <th>Color</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (cupon item in cupons)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.cuponName) </td>
+                            <td>@Html.DisplayFor(modelItem => item.width)</td>
+                            <td>@Html.DisplayFor(modelItem => item.height)</td>
+                            <td>@Html.DisplayFor(modelItem => item.spacing)</td>
+                            <td style="background: #@item.color;">&nbsp;</td>
+                            <td>
+                                <a href="javascript:openProfileDetailWindow(@(item.cuponId),'Edit','Cupon')" class="actionlink editlink">Edit</a>
+                                @Html.ActionLink("Delete", "DeleteCuponAjax", new { id=item.cuponId }, new { @class ="actionlink deletelink deleteprofiledetlink" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        <a href="javascript:openProfileDetailWindow(@ViewBag.profileId,'Create','Cupon')">Add Cupon</a>
+    </fieldset>
+    <fieldset>
+        <legend>Pannel Toolings</legend>
+        @if (paneltoolings.Count > 0) 
+        {
+            <table border="0" class="display">
+                <thead>
+                    <tr>
+                        <th>Toolings</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (panelTooling item in paneltoolings)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.x),@Html.DisplayFor(modelItem => item.y),@Html.DisplayFor(modelItem => item.r) </td>
+                            <td>
+                                <a href="javascript:openProfileDetailWindow(@(item.panelToolingId),'Edit','PanelTooling')" class="actionlink editlink">Edit</a>
+                                @Html.ActionLink("Delete", "DeletePanelToolingAjax", new { id=item.panelToolingId }, new { @class ="actionlink deletelink deleteprofiledetlink" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        <a href="javascript:openProfileDetailWindow(@ViewBag.profileId,'Create','PanelTooling')">Add Panel Tooling</a>
+    </fieldset>
+    <fieldset>
+        <legend>Drowing Colors</legend>
+        @if (drowingcolors.Count > 0) 
+        {
+            <table border="0" class="display">
+                <tbody>
+                    @foreach (drowingColor item in drowingcolors)
+                    {
+                        <tr>
+                            <td>Bg</td><td style="background: #@item.background;">&nbsp;</td>
+                            <td>Prof</td><td style="background: #@item.profile;">&nbsp;</td>
+                        @*</tr>
+                        <tr>*@
+                            <td>Pnl</td><td style="background: #@item.panel;">&nbsp;</td>
+                            <td>PCB</td><td style="background: #@item.pcb;">&nbsp;</td>
+                        @*</tr>
+                        <tr>*@
+                            <td>Mrgn</td><td style="background: #@item.margin;">&nbsp;</td>
+                            <td>Tlng</td><td style="background: #@item.tooling;">&nbsp;</td>
+                        @*</tr>
+                        <tr>*@
+                            <td>
+                                <a href="javascript:openProfileDetailWindow(@(item.drowingId),'Edit','DrowingColor')" class="actionlink editlink">Edit</a>
+                                @Html.ActionLink("Delete", "DeleteDrowingColorAjax", new { id=item.drowingId }, new { @class ="actionlink deletelink deleteprofiledetlink" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        <a href="javascript:openProfileDetailWindow(@ViewBag.profileId,'Create','DrowingColor')">Add Drowing Color</a>
+    </fieldset>
+</div>
+
+<div id="modalWindow"></div>
+
+@Scripts.Render("~/Scripts/Admin/profileDetails.js")

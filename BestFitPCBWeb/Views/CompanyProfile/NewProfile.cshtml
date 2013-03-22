@@ -1,0 +1,31 @@
+﻿@model BestFitBusinessLayer.companyProfile
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>New Company Profile</legend>
+        <div class="sixteen_column section">
+			<div class="ten column">
+				<div class="column_content">
+                    @Html.LabelFor(model => model.profileName)
+                    @Html.EditorFor(model => model.profileName)
+                    @Html.ValidationMessageFor(model => model.profileName)
+                </div>
+            </div>
+        </div>
+        @Html.HiddenFor(model => model.companyId)
+    </fieldset>
+    <div class="sixteen_column section">
+		<div class="six column">
+			<div class="column_content">
+                <input type="button" value="Cancel" class="alt_btn" onclick="hideForm()" />
+			</div>
+		</div>
+		<div class="six column">
+			<div class="column_content">
+				<input type="button" value="Save" class="alt_btn" onclick="submitForm(this.form)" />
+			</div>
+		</div>
+	</div>
+}
+

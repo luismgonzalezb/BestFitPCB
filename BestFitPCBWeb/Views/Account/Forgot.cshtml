@@ -1,0 +1,32 @@
+﻿@model BestFitPCBWeb.Models.ForgotModel
+
+@{
+    ViewBag.Title = "Recover Password";
+    Layout = "~/Views/Shared/_LayoutAccount.cshtml";
+}
+
+@using (Html.BeginForm("Forgot", "Account", FormMethod.Post, new { id = "login" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset class="boxBody">
+        <legend></legend>
+        <h1>Forgot Password</h1>
+        <div class="control-group">
+            @Html.LabelFor(m => m.UserName)
+            @Html.TextBoxFor(m => m.UserName, new { placeholder = "User Name", @class = "field required" })
+            @Html.ValidationMessageFor(m => m.UserName)
+        </div>
+        
+        <div class="submit">
+            <button type="submit">Send Email</button>
+        </div>
+    </fieldset>
+    <p class="register">Remembered password? @Html.ActionLink("Login Here!", "Login")</p>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

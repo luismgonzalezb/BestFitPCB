@@ -1,0 +1,75 @@
+﻿@model BestFitBusinessLayer.drowingColor
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <h4 class="alert_error" id="error-msg-det" style="visibility:hidden">Error Message</h4>
+    
+    <fieldset>
+        <legend>panelSize</legend>
+        <div class="sixteen_column section">
+			<div class="seven column">
+				<div class="column_content">
+                    <label for="background">Background</label>
+                    <div id="backgroundSelector"><div class="pickerBg" style="background-color: #@Model.background;"></div></div>
+                    @Html.HiddenFor(model => model.background)
+                </div>
+            </div>
+            <div class="seven column">
+				<div class="column_content">
+                    <label for="profile">Profile</label>
+                    <div id="profileSelector"><div class="pickerBg" style="background-color: #@Model.profile;"></div></div>
+                    @Html.HiddenFor(model => model.profile)
+                </div>
+            </div>
+        </div>
+        <div class="sixteen_column section">
+			<div class="seven column">
+				<div class="column_content">
+                    <label for="panel">Panel</label>
+                    <div id="panelSelector"><div class="pickerBg" style="background-color: #@Model.panel;"></div></div>
+                    @Html.HiddenFor(model => model.panel)
+                </div>
+            </div>
+            <div class="seven column">
+				<div class="column_content">
+                    <label for="pcb">Pcb</label>
+                    <div id="pcbSelector"><div class="pickerBg" style="background-color: #@Model.pcb;"></div></div>
+                    @Html.HiddenFor(model => model.pcb)
+                </div>
+            </div>
+        </div>
+        <div class="sixteen_column section">
+			<div class="seven column">
+				<div class="column_content">
+                    <label for="margin">Margin</label>
+                    <div id="marginSelector"><div class="pickerBg" style="background-color: #@Model.margin;"></div></div>
+                    @Html.HiddenFor(model => model.margin)
+                </div>
+            </div>
+            <div class="seven column">
+				<div class="column_content">
+                    <label for="tooling">Tooling</label>
+                    <div id="toolingSelector"><div class="pickerBg" style="background-color: #@Model.tooling;"></div></div>
+                    @Html.HiddenFor(model => model.tooling)
+                </div>
+            </div>
+        </div>
+        @Html.HiddenFor(model => model.profileId)
+        @Html.HiddenFor(model => model.drowingId)
+    </fieldset>
+    <div class="sixteen_column section">
+		<div class="seven column">
+			<div class="column_content">
+                <input type="button" value="Cancel" class="alt_btn" onclick="closePopup()" />
+			</div>
+		</div>
+		<div class="seven column">
+			<div class="column_content">
+				<input type="button" value="Save" class="alt_btn" onclick="submitDetailsForm(this.form)" />
+			</div>
+		</div>
+	</div>
+}
+
+@Scripts.Render("~/Scripts/Admin/colorpickerimplement.js")
