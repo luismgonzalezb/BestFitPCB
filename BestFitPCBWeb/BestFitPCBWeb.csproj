@@ -609,6 +609,7 @@
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Account\Forgot.cshtml" />
     <Content Include="Views\Account\PasswordReset.cshtml" />
+    <Content Include="Views\Home\Init.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

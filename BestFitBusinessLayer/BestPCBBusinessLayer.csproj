@@ -50,20 +50,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Mapping\arraySpacingMap.cs" />
-    <Compile Include="Models\Mapping\companyMap.cs" />
-    <Compile Include="Models\Mapping\companyProfileMap.cs" />
-    <Compile Include="Models\Mapping\companyUserMap.cs" />
-    <Compile Include="Models\Mapping\cupon.cs" />
-    <Compile Include="Models\Mapping\drowingColor.cs" />
-    <Compile Include="Models\Mapping\Methods.cs" />
-    <Compile Include="Models\Mapping\panelSize.cs" />
-    <Compile Include="Models\Mapping\panelSpacing.cs" />
-    <Compile Include="Models\Mapping\panelTooling.cs" />
-    <Compile Include="Models\Mapping\UserProfile.cs" />
-    <Compile Include="Models\Mapping\webpages_Membership.cs" />
-    <Compile Include="Models\Mapping\webpages_OAuthMembership.cs" />
-    <Compile Include="Models\Mapping\webpages_Roles.cs" />
     <Compile Include="Models\Methods.cs" />
     <Compile Include="Models\arraySpacing.cs" />
     <Compile Include="Models\BestFitPCBContext.cs" />
