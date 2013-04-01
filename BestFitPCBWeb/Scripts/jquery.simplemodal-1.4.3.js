@@ -1,9 +1,9 @@
 /*
- * SimpleModal 1.4.2 - jQuery Plugin
+ * SimpleModal 1.4.3 - jQuery Plugin
  * http://simplemodal.com/
- * Copyright (c) 2011 Eric Martin
+ * Copyright (c) 2012 Eric Martin
  * Licensed under MIT and GPL
- * Date: Sat, Dec 17 2011 15:35:38 -0800
+ * Date: Sat, Sep 8 2012 07:52:31 -0700
  */
 
 /**
@@ -55,10 +55,10 @@
  *
  * @name SimpleModal
  * @type jQuery
- * @requires jQuery v1.2.4
+ * @requires jQuery v1.3
  * @cat Plugins/Windows and Overlays
  * @author Eric Martin (http://ericmmartin.com)
- * @version 1.4.2
+ * @version 1.4.3
  */
 
 ;(function (factory) {
@@ -195,7 +195,7 @@
 		maxWidth: null,
 		autoResize: false,
 		autoPosition: true,
-		zIndex: 500,
+		zIndex: 1000,
 		close: true,
 		closeHTML: '<a class="modalCloseImg" title="Close"></a>',
 		closeClass: 'simplemodal-close',
@@ -231,8 +231,8 @@
 				return false;
 			}
 
-			// $.boxModel is undefined if checked earlier
-			ieQuirks = $.browser.msie && !$.boxModel;
+			// $.support.boxModel is undefined if checked earlier
+			ieQuirks = $.browser.msie && !$.support.boxModel;
 
 			// merge defaults and user options
 			s.o = $.extend({}, $.modal.defaults, options);
@@ -246,7 +246,7 @@
 			// determine how to handle the data based on its type
 			if (typeof data === 'object') {
 				// convert DOM object to a jQuery object
-				data = data instanceof jQuery ? data : $(data);
+				data = data instanceof $ ? data : $(data);
 				s.d.placeholder = false;
 
 				// if the object came from the DOM, keep track of its parent
@@ -492,11 +492,9 @@
 			}, 10);
 		},
 		getDimensions: function () {
-			// fix a jQuery/Opera bug with determining the window height
+			// fix a jQuery bug with determining the window height - use innerHeight if available
 			var s = this,
-				h = $.browser.opera && $.browser.version > '9.5' && $.fn.jquery < '1.3'
-						|| $.browser.opera && $.browser.version < '9.5' && $.fn.jquery > '1.2.6'
-				? wndw[0].innerHeight : wndw.height();
+				h = typeof window.innerHeight === 'undefined' ? wndw.height() : window.innerHeight;
 
 			d = [doc.height(), doc.width()];
 			w = [h, wndw.width()];
@@ -626,8 +624,8 @@
 		/*
 		 * Open the modal dialog elements
 		 * - Note: If you use the onOpen callback, you must "show" the
-		 *			overlay and container elements manually
-		 *		 (the iframe will be handled by SimpleModal)
+		 *         overlay and container elements manually
+		 *         (the iframe will be handled by SimpleModal)
 		 */
 		open: function () {
 			var s = this;

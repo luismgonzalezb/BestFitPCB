@@ -1,73 +1,64 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>@ViewBag.Title</title>
-        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-        <meta name="viewport" content="width=device-width" />
-        @Styles.Render("~/Content/admin")
-        @Styles.Render("~/Content/themes/base/css")
-        @Scripts.Render("~/bundles/modernizr")
-    </head>
-    <body>
-	    <header id="header">
-		    <hgroup>
-			    <h1 class="site_title">BEST PCB ADMIN</h1>
-			    <h2 class="section_title"></h2>
-		    </hgroup>
-	    </header> <!-- end of header bar -->
-	    <section id="secondary_bar">
-		    <div class="user">
-			    <p>@User.Identity.Name </p>
-		    </div>
-		    <div class="breadcrumbs_container">
-			    <article class="breadcrumbs">
-                    <a href="@Url.Action("Index","Dashboard")" >BEST PCB ADMIN</a> <div class="breadcrumb_divider"></div> <a class="current">@ViewBag.Title</a>
-			    </article>
-		    </div>
-	    </section><!-- end of secondary bar -->
-	
-	    <aside id="sidebar" class="column">
-
-            <h3>Best Fit APP</h3>
-		    <ul class="toggle">
-			    <li class="icn_new_article"><a href="@Url.Action("NewPanel","Panel")">New panel Layout</a></li>
-			    <li class="icn_edit_article"><a href="#">Edit panel Layout</a></li>
-		    </ul>
-            <h3>Companies</h3>
-		    <ul class="toggle">
-			    <li class="icn_new_article"><a href="@Url.Action("CreateCompany","Company")">New Company Profile</a></li>
-			    <li class="icn_settings"><a href="@Url.Action("CompanyList","Company")">Company Profile Settings</a></li>
-                <li class="icn_view_users"><a href="@Url.Action("CompanyUserList","Company")">Edit Company Users</a></li>
-		    </ul>
-		    <h3>Admin</h3>
-		    <ul class="toggle">
-			    <li class="icn_profile"><a href="@Url.Action("Manage","Account")">My Settings</a></li>
-			    <li class="icn_jump_back">
-                    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
-                        @Html.AntiForgeryToken()
-                        <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
-                    }
-                </li>
-		    </ul>
-		
-		    <footer>
-			    <hr />
-			    <p><strong>Copyright &copy; 2012 Best PCB</strong></p>
-			    <p>Theme by <a href="http://www.medialoot.com">MediaLoot</a></p>
-		    </footer>
-	    </aside><!-- end of sidebar -->
-	
-	    <section id="main" class="column">
-
-            @RenderBody()
-
-		    <div class="spacer"></div>
-	    </section>
-
-        @Scripts.Render("~/bundles/all")
-        @RenderSection("scripts", required: false)
-
-    </body>
-
+	<head>
+		<meta charset="utf-8" />
+		<title>@ViewBag.Title</title>
+		<link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+		<meta name="viewport" content="width=device-width" />
+		@Styles.Render("~/Content/admin")
+		@Styles.Render("~/Content/themes/base/css")
+	</head>
+	<body>
+		<header id="header">
+			<hgroup>
+				<h1 class="site_title">BEST PCB ADMIN</h1>
+				<h2 class="section_title"></h2>
+			</hgroup>
+		</header> <!-- end of header bar -->
+		<section id="secondary_bar">
+			<div class="user">
+				<p>@User.Identity.Name </p>
+			</div>
+			<div class="breadcrumbs_container">
+				<article class="breadcrumbs">
+					<a href="@Url.Action("Index","Dashboard")" >BEST PCB ADMIN</a> <div class="breadcrumb_divider"></div> <a class="current">@ViewBag.Title</a>
+				</article>
+			</div>
+		</section><!-- end of secondary bar -->
+		<aside id="sidebar" class="column">
+			<h3>Best Fit APP</h3>
+			<ul class="toggle">
+				<li class="icn_new_article"><a href="@Url.Action("NewPanel","Panel")">New panel Layout</a></li>
+				<li class="icn_edit_article"><a href="#">Edit panel Layout</a></li>
+			</ul>
+			<h3>Companies</h3>
+			<ul class="toggle">
+				<li class="icn_new_article"><a href="@Url.Action("CreateCompany","Company")">New Company Profile</a></li>
+				<li class="icn_settings"><a href="@Url.Action("CompanyList","Company")">Company Profile Settings</a></li>
+				<li class="icn_view_users"><a href="@Url.Action("CompanyUserList","Company")">Edit Company Users</a></li>
+			</ul>
+			<h3>Admin</h3>
+			<ul class="toggle">
+				<li class="icn_profile"><a href="@Url.Action("Manage","Account")">My Settings</a></li>
+				<li class="icn_jump_back">
+					@using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
+						@Html.AntiForgeryToken()
+						<a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+					}
+				</li>
+			</ul>
+			<footer>
+				<hr />
+				<p><strong>Copyright &copy; 2012 Best PCB</strong></p>
+				<p>Theme by <a href="http://www.medialoot.com">MediaLoot</a></p>
+			</footer>
+		</aside><!-- end of sidebar -->
+		<section id="main" class="column">
+			@RenderBody()
+			<div class="spacer"></div>
+		</section>
+		@{ Html.RenderPartial("_jQueryCDN"); }
+		@Scripts.Render("~/bundles/all")
+		@RenderSection("scripts", required: false)
+	</body>
 </html>

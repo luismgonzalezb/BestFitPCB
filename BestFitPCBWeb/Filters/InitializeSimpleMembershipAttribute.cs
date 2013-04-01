@@ -38,7 +38,7 @@ namespace BestFitPCBWeb.Filters
 						}
 					}
 
-					WebSecurity.InitializeDatabaseConnection("BestFitPCBAdmin", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+					WebSecurity.InitializeDatabaseConnection("BestFitPcbContext", "UserProfiles", "UserId", "UserName", autoCreateTables: true);
 				}
 				catch (Exception ex)
 				{

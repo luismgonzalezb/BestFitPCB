@@ -15,7 +15,7 @@
         @Html.AntiForgeryToken()
         @Html.ValidationSummary()
         <div class="control-group">
-    	    <label for="Email">Email</label>
+    	    <label for="UserName">Email</label>
             @Html.TextBoxFor(m => m.UserName, new { placeholder = "Email", @class = "field required" })
         </div>
         <div class="control-group">

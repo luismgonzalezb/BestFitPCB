@@ -3,10 +3,11 @@ namespace BestFitBusinessLayer.Models
 {
 	using System;
 	using System.ComponentModel.DataAnnotations;
+	using System.ComponentModel.DataAnnotations.Schema;
 
 	public partial class webpages_Membership
 	{
-		[Key]
+		[Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
 		public int UserId { get; set; }
 		public Nullable<System.DateTime> CreateDate { get; set; }
 		public string ConfirmationToken { get; set; }

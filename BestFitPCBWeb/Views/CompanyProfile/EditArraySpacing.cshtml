@@ -1,51 +1,51 @@
-﻿@model BestFitBusinessLayer.arraySpacing
+﻿@model BestFitBusinessLayer.Models.arraySpacing
 
 @using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
+	@Html.ValidationSummary(true)
 
-    <h4 class="alert_error" id="error-msg-det" style="visibility:hidden">Error Message</h4>
-    
-    <fieldset>
-        <legend>panelSize</legend>
-        <div class="sixteen_column section">
+	<h4 class="alert_error" id="error-msg-det" style="visibility:hidden">Error Message</h4>
+	
+	<fieldset>
+		<legend>panelSize</legend>
+		<div class="sixteen_column section">
 			<div class="seven column">
 				<div class="column_content">
-                    <label for="arraySpacingName">Name</label>
-                    @Html.TextBoxFor(model => model.arraySpacingName, new { style="width:70px;" })
-                    @Html.ValidationMessageFor(model => model.arraySpacingName)
-                </div>
-            </div>
-            <div class="seven column">
-				<div class="column_content">
-                    @Html.LabelFor(model => model.min)
-                    @Html.TextBoxFor(model => model.min, new { style="width:70px;" })
-                    @Html.ValidationMessageFor(model => model.min)
-                </div>
-            </div>
-        </div>
-        <div class="sixteen_column section">
+					<label for="arraySpacingName">Name</label>
+					@Html.TextBoxFor(model => model.arraySpacingName, new { style="width:70px;" })
+					@Html.ValidationMessageFor(model => model.arraySpacingName)
+				</div>
+			</div>
 			<div class="seven column">
 				<div class="column_content">
-                    @Html.LabelFor(model => model.max)
-                    @Html.TextBoxFor(model => model.max, new { style="width:70px;" })
-                    @Html.ValidationMessageFor(model => model.max)
-                </div>
-            </div>
-            <div class="seven column">
+					@Html.LabelFor(model => model.min)
+					@Html.TextBoxFor(model => model.min, new { style="width:70px;" })
+					@Html.ValidationMessageFor(model => model.min)
+				</div>
+			</div>
+		</div>
+		<div class="sixteen_column section">
+			<div class="seven column">
 				<div class="column_content">
-                    @Html.LabelFor(model => model.std)
-                    @Html.TextBoxFor(model => model.std, new { style="width:70px;" })
-                    @Html.ValidationMessageFor(model => model.std)
-                </div>
-            </div>
-        </div>
-        @Html.HiddenFor(model => model.profileId)
-        @Html.HiddenFor(model => model.arraySpacingId)
-    </fieldset>
-    <div class="sixteen_column section">
+					@Html.LabelFor(model => model.max)
+					@Html.TextBoxFor(model => model.max, new { style="width:70px;" })
+					@Html.ValidationMessageFor(model => model.max)
+				</div>
+			</div>
+			<div class="seven column">
+				<div class="column_content">
+					@Html.LabelFor(model => model.std)
+					@Html.TextBoxFor(model => model.std, new { style="width:70px;" })
+					@Html.ValidationMessageFor(model => model.std)
+				</div>
+			</div>
+		</div>
+		@Html.HiddenFor(model => model.profileId)
+		@Html.HiddenFor(model => model.arraySpacingId)
+	</fieldset>
+	<div class="sixteen_column section">
 		<div class="seven column">
 			<div class="column_content">
-                <input type="button" value="Cancel" class="alt_btn" onclick="closePopup()" />
+				<input type="button" value="Cancel" class="alt_btn" onclick="closePopup()" />
 			</div>
 		</div>
 		<div class="seven column">

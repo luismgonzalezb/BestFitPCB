@@ -1,63 +1,61 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>@ViewBag.Title</title>
-        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-        <meta name="viewport" content="width=device-width" />
-        @Styles.Render("~/Content/themes/home/style.css")
-        @Scripts.Render("~/bundles/modernizr")
-    </head>
-    <body>
-        <div id="daddy">
-            <header>
-                <div id="header">
-		            <div id="logo"><a href="./"><img src="@Url.Content("~/Images/logo.png")" alt="Your Company Logo" width="318" height="85" /></a></div><!-- logo -->
-		            <div id="menu">
-			            <ul>
-				            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                            <li>@Html.ActionLink("About", "About", "Home")</li>
-                            <li>@Html.ActionLink("Register", "Register", "Account")</li>
-                            <li>@Html.ActionLink("Log in", "Login", "Account")</li>
-			            </ul>
-		            </div><!-- menu -->
-		            <div id="ticker">
-			            News: New feature added to the page
-		            </div><!-- ticker -->
-		            <div id="headerimage">
-			            <div id="download"><span id="download-text"><a href="./">Get Sales Productive NOW!!!</a></span></div><!-- download -->
-			            <div id="icons">
-				            <a href="./"><img src="@Url.Content("~/Images/icon_home.gif")" alt="Home" width="13" height="13" id="home" /></a>
-				            <a href="./"><img src="@Url.Content("~/Images/icon_sitemap.gif")" alt="Sitemap" width="13" height="13" id="sitemap" /></a>
-				            <a href="./"><img src="@Url.Content("~/Images/icon_contact.gif")" alt="Contact" width="13" height="13" id="contact" /></a>
-			            </div><!-- icons -->
-			            <div id="slogan">@*your slogan could go here*@</div>
-		            </div>
-		            <!-- headerimage -->
-	            </div>
-	            <!-- header -->
-
-            </header>
-            <section>
-                <div id="content">
-                    @RenderBody()
-                </div><!-- content -->
-	            <div id="properspace"></div><!-- properspace -->
-            </section>
-        </div><!-- daddy -->
-        <footer>
-            <div id="footer">
-	            <div id="foot">
-		            <div id="foot1"><a href="./">Privacy Policy</a> - <a href="./">Terms Of Use</a></div><!-- foot1 -->
-		            <div id="foot2">
-			            <span class="valid">Valid <a href="http://validator.w3.org/check?uri=referer">XHTML</a> + <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a></span>
-                        Copyright 2012, Designed by <a href="http://www.symisun.com/" title="We digitalize your ambitions">SymiSun</a><span class="star"> Developed By Best PCB</span></a>
-		            </div><!-- foot1 -->
-	            </div><!-- foot -->
-            </div><!-- footer -->
-        </footer>
-
-        @Scripts.Render("~/bundles/all")
-        @RenderSection("scripts", required: false)
-    </body>
+	<head>
+		<meta charset="utf-8" />
+		<title>@ViewBag.Title</title>
+		<link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+		<meta name="viewport" content="width=device-width" />
+		@Styles.Render("~/Content/themes/home/style.css")
+	</head>
+	<body>
+		<div id="daddy">
+			<header>
+				<div id="header">
+					<div id="logo"><a href="./"><img src="@Url.Content("~/Images/logo.png")" alt="Your Company Logo" width="318" height="85" /></a></div><!-- logo -->
+					<div id="menu">
+						<ul>
+							<li>@Html.ActionLink("Home", "Index", "Home")</li>
+							<li>@Html.ActionLink("About", "About", "Home")</li>
+							<li>@Html.ActionLink("Register", "Register", "Account")</li>
+							<li>@Html.ActionLink("Log in", "Login", "Account")</li>
+						</ul>
+					</div><!-- menu -->
+					<div id="ticker">
+						News: New feature added to the page
+					</div><!-- ticker -->
+					<div id="headerimage">
+						<div id="download"><span id="download-text"><a href="./">Get Sales Productive NOW!!!</a></span></div><!-- download -->
+						<div id="icons">
+							<a href="./"><img src="@Url.Content("~/Images/icon_home.gif")" alt="Home" width="13" height="13" id="home" /></a>
+							<a href="./"><img src="@Url.Content("~/Images/icon_sitemap.gif")" alt="Sitemap" width="13" height="13" id="sitemap" /></a>
+							<a href="./"><img src="@Url.Content("~/Images/icon_contact.gif")" alt="Contact" width="13" height="13" id="contact" /></a>
+						</div><!-- icons -->
+						<div id="slogan">@*your slogan could go here*@</div>
+					</div>
+					<!-- headerimage -->
+				</div>
+				<!-- header -->
+			</header>
+			<section>
+				<div id="content">
+					@RenderBody()
+				</div><!-- content -->
+				<div id="properspace"></div><!-- properspace -->
+			</section>
+		</div><!-- daddy -->
+		<footer>
+			<div id="footer">
+				<div id="foot">
+					<div id="foot1"><a href="./">Privacy Policy</a> - <a href="./">Terms Of Use</a></div><!-- foot1 -->
+					<div id="foot2">
+						<span class="valid">Valid <a href="http://validator.w3.org/check?uri=referer">XHTML</a> + <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a></span>
+						Copyright 2012, Designed by <a href="http://www.symisun.com/" title="We digitalize your ambitions">SymiSun</a><span class="star"> Developed By Best PCB</span></a>
+					</div><!-- foot1 -->
+				</div><!-- foot -->
+			</div><!-- footer -->
+		</footer>
+		@{ Html.RenderPartial("_jQueryCDN"); }
+		@Scripts.Render("~/bundles/all")
+		@RenderSection("scripts", required: false)
+	</body>
 </html>

@@ -1,5 +1,5 @@
-﻿@model IDictionary<BestFitBusinessLayer.user, bool>
-@using BestFitBusinessLayer
+﻿@model IDictionary<BestFitBusinessLayer.Models.UserProfile, bool>
+@using BestFitBusinessLayer.Models
 
 <div class="grid_12" style="width:90%;" >
 	<div class="box">
@@ -11,7 +11,6 @@
 			<table class="display">
 				<thead>
 					<tr>
-						<th>User Name</th>
 						<th>Email Addreess</th>
 						<th>Admin</th>
 						<th></th>
@@ -20,13 +19,12 @@
 				<tbody>
 					@foreach (var item in Model) {
 						<tr>
-							<td>@Html.DisplayFor(modelItem => item.Key.userName)</td>
-							<td>@Html.DisplayFor(modelItem => item.Key.userEmail)</td>
+							<td>@item.Key.UserName</td>
 							<td>@Html.CheckBoxFor(modelItem => item.Value, new { disabled = true })</td>
 							<td>
-								<a href="javascript:setAdministrator('@Url.Action("SetAdminUserAjax","Company")',@(item.Key.userId), @ViewBag.companyId)" 
+								<a href="javascript:setAdministrator('@Url.Action("SetAdminUserAjax","Company")',@(item.Key.UserId), @ViewBag.companyId)" 
 									title="Enable/Disable Administrator rights fot this user" class="actionlink checklink set-admin-user-link">Set Def</a>
-								@Html.ActionLink("Delete", "DeleteCompanyUserAjax", new { usrId=item.Key.userId, cmpId = @ViewBag.companyId }, new { @class ="actionlink deletelink deleteprofilelink" })
+								@Html.ActionLink("Delete", "DeleteCompanyUserAjax", new { usrId=item.Key.UserId, cmpId = @ViewBag.companyId }, new { @class ="actionlink deletelink deleteprofilelink" })
 							</td>
 						</tr>
 					}
